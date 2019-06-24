@@ -293,6 +293,7 @@ class Modulecmd:
         traceback.print_exc()
     if out: 
       if cmdtype not in noout_cmds:
+	out = '\n'.join([line for line in out.split('\n') if 'os.environ' in line])
         if self.verbose:
           print "Calling eval on %s" % out
         exec(out)
